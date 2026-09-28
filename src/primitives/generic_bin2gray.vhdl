@@ -25,7 +25,7 @@ begin
 
   ripple_gen : if WIDTH > 1 generate
     bit_gen : for i in WIDTH - 2 downto 0 generate
-      gray(i) <= bin(i) xor bin(i + 1);
+      gray(i) <= bin(i) xor bin(i + 1); -- sillyxor
     end generate bit_gen;
   end generate ripple_gen;
 

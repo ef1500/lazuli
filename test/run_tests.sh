@@ -67,6 +67,14 @@ analyze "$ROOT/src/primitives/generic_bin2gray.vhdl"
 analyze "$ROOT/src/primitives/generic_rom_init.vhdl"
 analyze "$ROOT/src/primitives/generic_async_fifo.vhdl"
 
+# L1 arithmetic (claude_docs/04-vhdl-module-list.md S2.1/S2.2): the
+# array's only compute primitive and the rescaler's integer path.
+analyze "$ROOT/src/primitives/int_sum_tree.vhdl"
+analyze "$ROOT/src/primitives/int_absmax_tree.vhdl"
+analyze "$ROOT/src/primitives/int_mul_scale.vhdl"
+analyze "$ROOT/src/primitives/int_acc.vhdl"
+analyze "$ROOT/src/primitives/dsp_mac2.vhdl"
+
 # L0 memory/queue primitives and L1/L2 compute units
 analyze "$ROOT/src/primitives/generic_fifo.vhdl"
 analyze "$ROOT/src/primitives/generic_fpu.vhdl"
@@ -87,6 +95,12 @@ analyze "$ROOT/test/tb_generic_pulse_cdc.vhdl"
 analyze "$ROOT/test/tb_generic_bin2gray.vhdl"
 analyze "$ROOT/test/tb_generic_rom_init.vhdl"
 analyze "$ROOT/test/tb_generic_async_fifo.vhdl"
+
+analyze "$ROOT/test/tb_int_sum_tree.vhdl"
+analyze "$ROOT/test/tb_int_absmax_tree.vhdl"
+analyze "$ROOT/test/tb_int_mul_scale.vhdl"
+analyze "$ROOT/test/tb_int_acc.vhdl"
+analyze "$ROOT/test/tb_dsp_mac2.vhdl"
 
 analyze "$ROOT/test/tb_generic_fifo.vhdl"
 analyze "$ROOT/test/fpu_vectors.vhdl"
@@ -109,6 +123,11 @@ run_tb tb_generic_pulse_cdc
 run_tb tb_generic_bin2gray
 run_tb tb_generic_rom_init
 run_tb tb_generic_async_fifo
+run_tb tb_int_sum_tree
+run_tb tb_int_absmax_tree
+run_tb tb_int_mul_scale
+run_tb tb_int_acc
+run_tb tb_dsp_mac2
 run_tb tb_generic_fifo
 run_tb tb_generic_fpu
 run_tb tb_generic_lookup
