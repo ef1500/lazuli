@@ -96,12 +96,22 @@ analyze "$ROOT/src/weight/q4k_unpack.vhdl"
 analyze "$ROOT/src/weight/q6k_unpack.vhdl"
 analyze "$ROOT/src/weight/wt_reader.vhdl"
 
+# L2 -- rescaler (U10, claude_docs/08-vhdl-implementation-spec.md S2.2).
+# generic_fpu.vhdl/generic_sdp_ram.vhdl are pulled forward from the L0/L1
+# block below (ghdl -a needs a direct 'entity work.X' instantiation's
+# entity already analyzed, so these two are analyzed here instead of
+# twice) -- moved rather than duplicated, so they're removed from their
+# original spot further down.
+analyze "$ROOT/src/primitives/generic_fpu.vhdl"
+analyze "$ROOT/src/primitives/generic_sdp_ram.vhdl"
+analyze "$ROOT/src/rescaling/group_scale_acc.vhdl"
+analyze "$ROOT/src/rescaling/sb_finish.vhdl"
+analyze "$ROOT/src/rescaling/acc_ram_bank.vhdl"
+
 # L0 memory/queue primitives and L1/L2 compute units
 analyze "$ROOT/src/primitives/generic_fifo.vhdl"
-analyze "$ROOT/src/primitives/generic_fpu.vhdl"
 analyze "$ROOT/src/primitives/generic_lookup.vhdl"
 analyze "$ROOT/src/primitives/generic_vector_unit.vhdl"
-analyze "$ROOT/src/primitives/generic_sdp_ram.vhdl"
 analyze "$ROOT/src/primitives/generic_tdp_ram.vhdl"
 analyze "$ROOT/src/lazuli.vhdl"
 
@@ -139,6 +149,11 @@ analyze "$ROOT/test/tb_q4k_unpack.vhdl"
 analyze "$ROOT/test/q6k_vectors.vhdl"
 analyze "$ROOT/test/tb_q6k_unpack.vhdl"
 analyze "$ROOT/test/tb_wt_reader.vhdl"
+
+analyze "$ROOT/test/tb_group_scale_acc.vhdl"
+analyze "$ROOT/test/tb_sb_finish.vhdl"
+analyze "$ROOT/test/tb_acc_ram_bank.vhdl"
+analyze "$ROOT/test/tb_rescaler_q4k.vhdl"
 
 analyze "$ROOT/test/tb_generic_fifo.vhdl"
 analyze "$ROOT/test/fpu_vectors.vhdl"
@@ -178,6 +193,10 @@ run_tb tb_q3k_unpack
 run_tb tb_q4k_unpack
 run_tb tb_q6k_unpack
 run_tb tb_wt_reader
+run_tb tb_group_scale_acc
+run_tb tb_sb_finish
+run_tb tb_acc_ram_bank
+run_tb tb_rescaler_q4k
 run_tb tb_generic_fifo
 run_tb tb_generic_fpu
 run_tb tb_generic_lookup
