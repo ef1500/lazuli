@@ -6,10 +6,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- instances. Used both for plain same-clock-domain pipeline alignment
 -- and, driven from an asynchronous source signal, as the synchronizer
 -- chain inside generic_reset_sync.vhdl and generic_pulse_cdc.vhdl.
+--
+-- STAGES is 'natural', not 'positive': 0 is a legal (zero-delay,
+-- combinational passthrough) value, needed by anything that generates a
+-- per-index delay bank whose index starts at 0 (act_skew.vhdl/ctrl_skew
+-- .vhdl's row/column 0 -- see their headers) rather than special-casing
+-- the zero-stage case at every call site.
 entity generic_delay_line is
   generic (
     WIDTH  : positive := 8;
-    STAGES : positive := 1
+    STAGES : natural  := 1
   );
   port (
     clk : in  std_logic;

@@ -76,9 +76,12 @@ analyze "$ROOT/src/primitives/int_acc.vhdl"
 analyze "$ROOT/src/primitives/dsp_mac2.vhdl"
 
 # L2 -- the matrix array (U9, claude_docs/08-vhdl-implementation-spec.md
-# S3): pe_cell/pe_column so far.
+# S3).
 analyze "$ROOT/src/array/pe_cell.vhdl"
 analyze "$ROOT/src/array/pe_column.vhdl"
+analyze "$ROOT/src/array/act_skew.vhdl"
+analyze "$ROOT/src/array/ctrl_skew.vhdl"
+analyze "$ROOT/src/array/sys_array.vhdl"
 
 # L0 memory/queue primitives and L1/L2 compute units
 analyze "$ROOT/src/primitives/generic_fifo.vhdl"
@@ -109,6 +112,9 @@ analyze "$ROOT/test/tb_dsp_mac2.vhdl"
 
 analyze "$ROOT/test/tb_pe_cell.vhdl"
 analyze "$ROOT/test/tb_pe_column.vhdl"
+analyze "$ROOT/test/tb_act_skew.vhdl"
+analyze "$ROOT/test/tb_ctrl_skew.vhdl"
+analyze "$ROOT/test/tb_sys_array.vhdl"
 
 analyze "$ROOT/test/tb_generic_fifo.vhdl"
 analyze "$ROOT/test/fpu_vectors.vhdl"
@@ -138,6 +144,9 @@ run_tb tb_int_acc
 run_tb tb_dsp_mac2
 run_tb tb_pe_cell
 run_tb tb_pe_column
+run_tb tb_act_skew
+run_tb tb_ctrl_skew
+run_tb tb_sys_array
 run_tb tb_generic_fifo
 run_tb tb_generic_fpu
 run_tb tb_generic_lookup
