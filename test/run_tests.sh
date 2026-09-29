@@ -125,6 +125,19 @@ analyze "$ROOT/src/lazuli.vhdl"
 # lives here since tb_vec_seq.vhdl drives a real lazuli.vhdl instance.
 analyze "$ROOT/src/vector/vec_seq.vhdl"
 
+# L2 -- attention engine (U11, claude_docs/08-vhdl-implementation-spec.md
+# S5.1). qk_lanes/kv_reader are independent; softmax_online/pv_lanes need
+# generic_fpu/generic_lookup/generic_sdp_ram/int_acc (already analyzed
+# above); attn_finish additionally needs act_quantizer (already analyzed
+# in the U8 block); attn_seq is a pure sequencer (project_types/generic_
+# register only) but lives here with its siblings for readability.
+analyze "$ROOT/src/attention/qk_lanes.vhdl"
+analyze "$ROOT/src/attention/kv_reader.vhdl"
+analyze "$ROOT/src/attention/softmax_online.vhdl"
+analyze "$ROOT/src/attention/pv_lanes.vhdl"
+analyze "$ROOT/src/attention/attn_finish.vhdl"
+analyze "$ROOT/src/attention/attn_seq.vhdl"
+
 echo "== analyzing test/ =="
 analyze "$ROOT/test/tb_generic_base.vhdl"
 analyze "$ROOT/test/tb_generic_lzc.vhdl"
@@ -169,6 +182,13 @@ analyze "$ROOT/test/tb_act_quantizer.vhdl"
 analyze "$ROOT/test/tb_act_store.vhdl"
 
 analyze "$ROOT/test/tb_vec_seq.vhdl"
+
+analyze "$ROOT/test/tb_qk_lanes.vhdl"
+analyze "$ROOT/test/tb_kv_reader.vhdl"
+analyze "$ROOT/test/tb_softmax_online.vhdl"
+analyze "$ROOT/test/tb_pv_lanes.vhdl"
+analyze "$ROOT/test/tb_attn_finish.vhdl"
+analyze "$ROOT/test/tb_attn_seq.vhdl"
 
 analyze "$ROOT/test/tb_generic_fifo.vhdl"
 analyze "$ROOT/test/fpu_vectors.vhdl"
@@ -215,6 +235,12 @@ run_tb tb_rescaler_q4k
 run_tb tb_act_quantizer
 run_tb tb_act_store
 run_tb tb_vec_seq
+run_tb tb_qk_lanes
+run_tb tb_kv_reader
+run_tb tb_softmax_online
+run_tb tb_pv_lanes
+run_tb tb_attn_finish
+run_tb tb_attn_seq
 run_tb tb_generic_fifo
 run_tb tb_generic_fpu
 run_tb tb_generic_lookup
