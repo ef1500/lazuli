@@ -18,12 +18,20 @@ use IEEE.NUMERIC_STD.ALL;
 -- (Q3_K/Q4_K: 6 bits, Q6_K: 8 bits, per 04 S2.2) without a format-to-
 -- width lookup baked in here.
 --
--- group_scale is always non-negative in every K-quant format this
--- project reads (it's a magnitude, never a signed delta), so it's typed
--- 'unsigned'. Multiplying a signed value by an unsigned one needs an
--- explicit zero-extend-then-reinterpret-as-signed step first: plain
--- numeric_std (unlike some VHDL-2008 packages) has no mixed signed *
--- unsigned "*" operator, checked against this project's GHDL.
+-- group_scale is SIGNED, not unsigned as an earlier version of this
+-- entity assumed ("group_scale is always non-negative... it's a
+-- magnitude, never a signed delta"). That was true for Q3_K/Q4_K but
+-- wrong for Q6_K: 08-vhdl-implementation-spec.md S2.1's own table calls
+-- Q6_K's group scale out explicitly as "8-bit signed group scale"
+-- (matching ggml's block_q6_K, whose `scales` field is a plain
+-- `int8_t` array, not a packed-unsigned field like Q3_K/Q4_K's). Found
+-- while building q6k_unpack.vhdl and checking its scale output against
+-- this entity's existing port type -- a real, spec-confirmed gap, not
+-- just a recalled detail. Widening group_scale to signed is strictly
+-- more general: Q3_K/Q4_K's non-negative 6-bit scales still fit and
+-- multiply the same as before (a non-negative signed value equals its
+-- unsigned reading), so this is a pure generalization, not a behavior
+-- change for the formats that were already correct.
 entity int_mul_scale is
   generic (
     LANE_WIDTH  : positive := 17;
@@ -33,29 +41,23 @@ entity int_mul_scale is
     clk         : in  std_logic;
     ce          : in  std_logic;
     lane_sum    : in  signed(LANE_WIDTH - 1 downto 0);
-    group_scale : in  unsigned(SCALE_WIDTH - 1 downto 0);
+    group_scale : in  signed(SCALE_WIDTH - 1 downto 0);
     p           : out signed(LANE_WIDTH + SCALE_WIDTH - 1 downto 0)
   );
 end entity int_mul_scale;
 
 architecture behavioral of int_mul_scale is
-  signal scale_s : signed(SCALE_WIDTH downto 0);
-  signal product : signed(LANE_WIDTH + SCALE_WIDTH downto 0);
+  signal product : signed(LANE_WIDTH + SCALE_WIDTH - 1 downto 0);
   signal p_slv    : std_logic_vector(LANE_WIDTH + SCALE_WIDTH - 1 downto 0);
 begin
 
-  -- zero-extend group_scale by one guard bit, then reinterpret as
-  -- signed: the guard bit is always '0' (unsigned zero-extension), so
-  -- this represents the same non-negative value as a signed number
-  -- without changing it.
-  scale_s <= signed(resize(group_scale, SCALE_WIDTH + 1));
-  product <= lane_sum * scale_s;
+  product <= lane_sum * group_scale;
 
   p_reg : entity work.generic_register
     generic map (WIDTH => LANE_WIDTH + SCALE_WIDTH)
     port map (
       clk => clk, rst => '0', en => ce,
-      d => std_logic_vector(resize(product, LANE_WIDTH + SCALE_WIDTH)),
+      d => std_logic_vector(product),
       q => p_slv
     );
 

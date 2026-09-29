@@ -4,9 +4,10 @@ use IEEE.NUMERIC_STD.ALL;
 
 -- Self-checking testbench for int_mul_scale.vhdl. Exhaustive over every
 -- (lane_sum, group_scale) pair at LANE_WIDTH=6 (-32..31), SCALE_WIDTH=4
--- (0..15) -- small enough to cover every input combination, including
--- the sign*magnitude extremes that motivate the header comment's
--- zero-extend-then-reinterpret-as-signed step.
+-- (-8..7) -- small enough to cover every input combination, including
+-- both operands' full signed range (group_scale became signed after
+-- this entity's header found Q6_K's group scale is genuinely signed,
+-- not just non-negative like Q3_K/Q4_K's).
 entity tb_int_mul_scale is
 end entity;
 
@@ -16,8 +17,8 @@ architecture sim of tb_int_mul_scale is
 
   signal clk         : std_logic := '0';
   signal ce          : std_logic := '0';
-  signal lane_sum    : signed(LW - 1 downto 0)   := (others => '0');
-  signal group_scale : unsigned(SW - 1 downto 0) := (others => '0');
+  signal lane_sum    : signed(LW - 1 downto 0) := (others => '0');
+  signal group_scale : signed(SW - 1 downto 0) := (others => '0');
   signal p           : signed(LW + SW - 1 downto 0);
   signal done        : boolean := false;
 begin
@@ -35,9 +36,9 @@ begin
     ce <= '1';
 
     for ls in -32 to 31 loop
-      for sc in 0 to 15 loop
+      for sc in -8 to 7 loop
         lane_sum    <= to_signed(ls, LW);
-        group_scale <= to_unsigned(sc, SW);
+        group_scale <= to_signed(sc, SW);
         wait until rising_edge(clk);
         wait for 1 ns;
         expect := ls * sc;
@@ -49,13 +50,13 @@ begin
       end loop;
     end loop;
 
-    -- ce=0 must hold the last registered value (ls=31, sc=15 from the loop above)
+    -- ce=0 must hold the last registered value (ls=31, sc=7 from the loop above)
     ce <= '0';
     lane_sum    <= to_signed(5, LW);
-    group_scale <= to_unsigned(5, SW);
+    group_scale <= to_signed(-5, SW);
     wait until rising_edge(clk);
     wait for 1 ns;
-    if to_integer(p) /= 31 * 15 then
+    if to_integer(p) /= 31 * 7 then
       fails := fails + 1;
       report "FAIL: p changed while ce=0" severity error;
     end if;

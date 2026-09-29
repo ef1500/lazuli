@@ -3,7 +3,11 @@
 # dependency order, and fails (nonzero exit) if any of them reports
 # anything other than "ALL PASS". Regenerate the golden vector files
 # first if src/primitives/generic_fpu.vhdl or generic_lookup.vhdl
-# changed (test/gen/gen_fpu_vectors.py, test/gen/gen_lookup_vectors.py).
+# changed (test/gen/gen_fpu_vectors.py, test/gen/gen_lookup_vectors.py),
+# or if any of src/weight/q3k_unpack.vhdl/q4k_unpack.vhdl/q6k_unpack.
+# vhdl's documented formula changes (test/gen/gen_q3k_vectors.pl,
+# gen_q4k_vectors.pl, gen_q6k_vectors.pl -- Perl, not Python, since no
+# Python interpreter was available when those were written).
 #
 # Usage: test/run_tests.sh [--keep]
 #   --keep   don't delete the scratch work directory when done (for
@@ -82,6 +86,15 @@ analyze "$ROOT/src/array/pe_column.vhdl"
 analyze "$ROOT/src/array/act_skew.vhdl"
 analyze "$ROOT/src/array/ctrl_skew.vhdl"
 analyze "$ROOT/src/array/sys_array.vhdl"
+analyze "$ROOT/src/array/weight_loader.vhdl"
+analyze "$ROOT/src/array/array_seq.vhdl"
+
+# L2 -- weight path (U7, claude_docs/08-vhdl-implementation-spec.md S4).
+analyze "$ROOT/src/weight/wt_pack.vhdl"
+analyze "$ROOT/src/weight/q3k_unpack.vhdl"
+analyze "$ROOT/src/weight/q4k_unpack.vhdl"
+analyze "$ROOT/src/weight/q6k_unpack.vhdl"
+analyze "$ROOT/src/weight/wt_reader.vhdl"
 
 # L0 memory/queue primitives and L1/L2 compute units
 analyze "$ROOT/src/primitives/generic_fifo.vhdl"
@@ -115,6 +128,17 @@ analyze "$ROOT/test/tb_pe_column.vhdl"
 analyze "$ROOT/test/tb_act_skew.vhdl"
 analyze "$ROOT/test/tb_ctrl_skew.vhdl"
 analyze "$ROOT/test/tb_sys_array.vhdl"
+analyze "$ROOT/test/tb_weight_loader.vhdl"
+analyze "$ROOT/test/tb_array_seq.vhdl"
+
+analyze "$ROOT/test/tb_wt_pack.vhdl"
+analyze "$ROOT/test/q3k_vectors.vhdl"
+analyze "$ROOT/test/tb_q3k_unpack.vhdl"
+analyze "$ROOT/test/q4k_vectors.vhdl"
+analyze "$ROOT/test/tb_q4k_unpack.vhdl"
+analyze "$ROOT/test/q6k_vectors.vhdl"
+analyze "$ROOT/test/tb_q6k_unpack.vhdl"
+analyze "$ROOT/test/tb_wt_reader.vhdl"
 
 analyze "$ROOT/test/tb_generic_fifo.vhdl"
 analyze "$ROOT/test/fpu_vectors.vhdl"
@@ -147,6 +171,13 @@ run_tb tb_pe_column
 run_tb tb_act_skew
 run_tb tb_ctrl_skew
 run_tb tb_sys_array
+run_tb tb_weight_loader
+run_tb tb_array_seq
+run_tb tb_wt_pack
+run_tb tb_q3k_unpack
+run_tb tb_q4k_unpack
+run_tb tb_q6k_unpack
+run_tb tb_wt_reader
 run_tb tb_generic_fifo
 run_tb tb_generic_fpu
 run_tb tb_generic_lookup
