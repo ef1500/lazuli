@@ -2,8 +2,8 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Weight block reader (claude_docs/04-vhdl-module-list.md's U7 entry:
--- "Reads tile-ordered blocks from DDR"; claude_docs/03-architecture-
+-- Weight block reader (syseng_docs/04-vhdl-module-list.md's U7 entry:
+-- "Reads tile-ordered blocks from DDR"; syseng_docs/03-architecture-
 -- units.md's U7: "converter output, 14,080 B for Q3_K"). Assembles a
 -- byte stream into complete, format-sized super-blocks and hands them
 -- off one at a time to whichever unpacker (q3k_unpack/q4k_unpack/

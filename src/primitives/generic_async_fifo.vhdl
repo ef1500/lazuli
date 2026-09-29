@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Generic asynchronous (dual-clock) FIFO (claude_docs/04-vhdl-module-
+-- Generic asynchronous (dual-clock) FIFO (syseng_docs/04-vhdl-module-
 -- list.md's L0 utility 'async_fifo': "Gray-code pointer FIFO for clock
 -- crossings"). Depth is 2**ADDR_BITS. The classic Cummings design:
 -- binary read/write pointers one bit wider than the address (the extra

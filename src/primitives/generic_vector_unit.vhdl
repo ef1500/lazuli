@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Generic vector ALU lane (claude_docs/08-vhdl-implementation-spec.md
+-- Generic vector ALU lane (syseng_docs/08-vhdl-implementation-spec.md
 -- S6.1's 'vec_lane'): one fp32 add/sub/mul/max/cvt unit (generic_fpu)
 -- plus one table-driven function unit (generic_lookup, recip/rsqrt/
 -- exp2/sigmoid/silu/gelu), selected by 'op'. ALU_LUT reads 'a' through
@@ -11,7 +11,7 @@ use work.project_types.all;
 -- generic_fpu as documented there.
 --
 -- Real hardware builds 8 of these per tile (S6.1: "8 lanes per tile");
--- this file is the one lane -- claude_docs/08's 'vec_seq' (the
+-- this file is the one lane -- syseng_docs/08's 'vec_seq' (the
 -- descriptor walker that feeds 8 lanes from a host tpu_vop command) is
 -- out of scope here since it depends on a command struct (ref/tpu.h)
 -- that doesn't exist in this repo yet.

@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- U11 entity 5/6 (claude_docs/04-vhdl-module-list.md's `attn_finish` row:
+-- U11 entity 5/6 (syseng_docs/04-vhdl-module-list.md's `attn_finish` row:
 -- "Divide by the sum (recip, fmul), quantize back for the o matmul").
 --
 -- Two steps, run once per resident query, after that query's whole

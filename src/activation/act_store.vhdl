@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- U8 entity 2/2 (claude_docs/04-vhdl-module-list.md's `act_store` row:
+-- U8 entity 2/2 (syseng_docs/04-vhdl-module-list.md's `act_store` row:
 -- "act_ram + act_scale_ram with ping-pong"). Double-buffered storage for
 -- act_quantizer.vhdl's per-block output (q_out/scale_out/sum_out) --
 -- one buffer feeds the array/rescaler while the vector unit's next

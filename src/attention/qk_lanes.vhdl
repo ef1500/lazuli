@@ -3,8 +3,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- U11 entity 1/6 (claude_docs/04-vhdl-module-list.md's `qk_lanes` row:
--- "Int8 x int8 dot products, one group per KV head"; claude_docs/08-vhdl-
+-- U11 entity 1/6 (syseng_docs/04-vhdl-module-list.md's `qk_lanes` row:
+-- "Int8 x int8 dot products, one group per KV head"; syseng_docs/08-vhdl-
 -- implementation-spec.md S5.1: "int8xint8 dot product over 128 dims ->
 -- 22-bit signed accumulator").
 --

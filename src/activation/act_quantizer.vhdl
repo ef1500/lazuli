@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- U8 entity 1/2 (claude_docs/03-architecture-units.md's U8, claude_docs/
+-- U8 entity 1/2 (syseng_docs/03-architecture-units.md's U8, syseng_docs/
 -- 04-vhdl-module-list.md's `act_quantizer` row): per BLOCK_SIZE-element
 -- (QK_K=256) block, "abs-max -> recip -> multiply -> round -> clamp
 -- +-127", plus the per-32 Sigma(q) group sums Q4_K's asymmetric rescale

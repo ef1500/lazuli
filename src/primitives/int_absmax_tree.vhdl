@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Generic combinational absolute-maximum tree (claude_docs/04-vhdl-
+-- Generic combinational absolute-maximum tree (syseng_docs/04-vhdl-
 -- module-list.md's L1 'int_absmax_tree'): returns the largest magnitude
 -- among N signed WIDTH-bit values -- used by the activation quantizer's
 -- per-256-element abs-max step (04 S2.3/S4's act_quantizer: "abs-max ->

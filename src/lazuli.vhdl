@@ -4,19 +4,19 @@
 --
 -- This wires together every primitive that currently has a real VHDL
 -- implementation (src/primitives/*.vhdl) into one block: LANES copies of
--- generic_vector_unit (claude_docs/08-vhdl-implementation-spec.md S6.1's
+-- generic_vector_unit (syseng_docs/08-vhdl-implementation-spec.md S6.1's
 -- 'vec_lane', 8 per tile there) run in lockstep SIMD, fed and drained
 -- through generic_fifo operand/result queues. It is the vector-unit tile
--- (U12 in claude_docs/03-architecture-units.md), not the full chip --
+-- (U12 in syseng_docs/03-architecture-units.md), not the full chip --
 -- the systolic array (U9), weight path (U7), attention engine (U11) and
--- memory system (L3) are still plans in claude_docs, not code, so this
+-- memory system (L3) are still plans in syseng_docs, not code, so this
 -- entity doesn't (and can't yet) instantiate them.
 --
 -- Every lane executes the SAME op/sub/cvt/lut_slot each cycle -- this
 -- is a SIMD lane array, matching S6.1's description of vec_lane as one
 -- bundle selected by one opcode field. Each lane gets its own (a,b)
 -- operand pair, packed LANES-wide into a_data/b_data. There is no
--- vec_seq here: claude_docs/08 describes it as walking a tpu_vop
+-- vec_seq here: syseng_docs/08 describes it as walking a tpu_vop
 -- command's stream descriptors, and that command format (ref/tpu.h)
 -- doesn't exist in this repo, so operand sequencing is the caller's job.
 --
@@ -30,7 +30,7 @@
 -- 'in_wen' retires, or size QDEPTH generously, if every result matters.
 --
 -- Every result is also mirrored into result_ram (generic_sdp_ram.vhdl,
--- claude_docs/04's L0 utility 'sdp_ram'), a circular buffer of the last
+-- syseng_docs/04's L0 utility 'sdp_ram'), a circular buffer of the last
 -- RDEPTH results addressable by result_addr/result_data -- a second,
 -- random-access way to read a result besides draining y_fifo/flag_fifo
 -- in order, independent of out_ren (this is the memory-controller

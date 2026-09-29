@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- U11 entity 3/6 (claude_docs/04-vhdl-module-list.md's `softmax_online`
+-- U11 entity 3/6 (syseng_docs/04-vhdl-module-list.md's `softmax_online`
 -- row: "Running max, exp, running sum, chunk-boundary rescale"; 08-vhdl-
 -- implementation-spec.md S5.1: "running max and sum per query, updated
 -- per 16-token chunk").

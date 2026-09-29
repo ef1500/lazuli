@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Rescaler U10 entity 3/3 (claude_docs/04-vhdl-module-list.md's U10
+-- Rescaler U10 entity 3/3 (syseng_docs/04-vhdl-module-list.md's U10
 -- table: "128 small RAM slices, one per column"). A thin generate-loop
 -- bundle of NUM_COLUMNS independent generic_sdp_ram.vhdl instances, one
 -- per output column's running fp32 accumulator -- there is no cross-

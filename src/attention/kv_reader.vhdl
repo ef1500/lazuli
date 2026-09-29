@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- U11 entity 2/6 (claude_docs/04-vhdl-module-list.md's `kv_reader` row:
+-- U11 entity 2/6 (syseng_docs/04-vhdl-module-list.md's `kv_reader` row:
 -- "Gets 4 KiB runs (from kv_dma), presents K then V"; 08-vhdl-
 -- implementation-spec.md S5.1's "16-token chunk (4 KiB read granularity,
 -- matching kv_page_mgr's page geometry)").

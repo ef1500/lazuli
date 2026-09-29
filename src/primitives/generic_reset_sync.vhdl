@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Generic reset synchronizer (claude_docs/04-vhdl-module-list.md's L0
+-- Generic reset synchronizer (syseng_docs/04-vhdl-module-list.md's L0
 -- utility 'reset_sync'): takes an asynchronous, active-high reset
 -- request and produces a version that asserts immediately (no clock
 -- needed) but releases only after STAGES clean clock edges, avoiding a

@@ -2,8 +2,8 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- The full matrix array tile (claude_docs/08-vhdl-implementation-spec.
--- md S3.3, claude_docs/04-vhdl-module-list.md's U9): DSP_COLUMNS
+-- The full matrix array tile (syseng_docs/08-vhdl-implementation-spec.
+-- md S3.3, syseng_docs/04-vhdl-module-list.md's U9): DSP_COLUMNS
 -- pe_column instances, plus the act_skew/ctrl_skew this session found
 -- they need (see pe_column.vhdl's header for the dataflow model this is
 -- built on). Presents a clean, un-skewed interface to the outside

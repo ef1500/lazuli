@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Weight path's two-lane packer (claude_docs/04-vhdl-module-list.md's
+-- Weight path's two-lane packer (syseng_docs/04-vhdl-module-list.md's
 -- U7 entry: "Builds q1 + (q2 << 17) words"). Purely combinational --
 -- mirrors dsp_mac2.vhdl's OWN a_word formula exactly (resize q1, add
 -- q2 shifted left by SPACING), since that IS the packed-A-word format

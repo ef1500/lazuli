@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- One systolic-array cell (claude_docs/08-vhdl-implementation-spec.md
+-- One systolic-array cell (syseng_docs/08-vhdl-implementation-spec.md
 -- S3.1): a dsp_mac2 plus the activation/control pass-through pe_column
 -- chains cell to cell. Registers x_in -> x_out and first_in/last_in ->
 -- first_out/last_out one clock -- gated by the same 'ce' that gates

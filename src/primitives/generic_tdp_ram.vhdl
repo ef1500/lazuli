@@ -3,13 +3,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Generic true dual-port RAM (claude_docs/04-vhdl-module-list.md's L0
+-- Generic true dual-port RAM (syseng_docs/04-vhdl-module-list.md's L0
 -- utility 'tdp_ram': "Inferred block/LUT RAM", generics W, DEPTH). Two
 -- fully independent, symmetric ports, each able to read and/or write
 -- its own address every cycle, sharing a single clock. Useful for
 -- weight double-buffering (one port fills the "next" tile while the
 -- other drains the "active" one) or any other two-accessor structure --
--- see claude_docs/03-architecture-units.md U9's weight-loader discussion.
+-- see syseng_docs/03-architecture-units.md U9's weight-loader discussion.
 --
 -- Synchronous (registered) read on both ports, 1-cycle latency, same
 -- inference shape as generic_sdp_ram.vhdl (one array signal, one

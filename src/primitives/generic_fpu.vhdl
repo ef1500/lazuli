@@ -5,7 +5,7 @@ use work.project_types.all;
 
 -- Generic fp32 ALU: add/sub, multiply, max, and int32<->fp32/fp16<->fp32
 -- conversions, selected by 'op'. One-cycle latency (registered on 'clk'
--- when 'ce' = '1'). Semantics follow claude_docs/08-vhdl-implementation-
+-- when 'ce' = '1'). Semantics follow syseng_docs/08-vhdl-implementation-
 -- spec.md S2.3:
 --   * round to nearest, ties to even
 --   * denormal operands are read as zero; a denormal/underflowing result

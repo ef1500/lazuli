@@ -2,8 +2,8 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Rescaler integer stage (claude_docs/08-vhdl-implementation-spec.md
--- S2.2, claude_docs/04-vhdl-module-list.md S2.2): sums a stream of
+-- Rescaler integer stage (syseng_docs/08-vhdl-implementation-spec.md
+-- S2.2, syseng_docs/04-vhdl-module-list.md S2.2): sums a stream of
 -- int_mul_scale products into one accumulator, synchronously cleared at
 -- each super-block start (so 'rst' here is a per-group control pulse
 -- from the caller, not a chip-wide reset). One instance serves any

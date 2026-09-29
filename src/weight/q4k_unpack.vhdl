@@ -2,8 +2,8 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Q4_K unpacker (claude_docs/08-vhdl-implementation-spec.md S4.1,
--- claude_docs/04-vhdl-module-list.md S1/S4). Turns one raw 144-byte
+-- Q4_K unpacker (syseng_docs/08-vhdl-implementation-spec.md S4.1,
+-- syseng_docs/04-vhdl-module-list.md S1/S4). Turns one raw 144-byte
 -- Q4_K super-block (256 weights) into 16 GROUPS of 16 weights each
 -- plus, per group, the (sc, m) pair its 32-weight PARENT group shares
 -- -- Q4_K's asymmetric format ties one (sc,m) pair to two consecutive

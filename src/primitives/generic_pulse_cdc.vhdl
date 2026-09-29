@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Generic single-pulse clock-domain crossing (claude_docs/04-vhdl-
+-- Generic single-pulse clock-domain crossing (syseng_docs/04-vhdl-
 -- module-list.md's L0 utility 'pulse_cdc'): a 1-cycle pulse in the
 -- source clock domain produces exactly one 1-cycle pulse in the
 -- destination domain, however unrelated the two clocks are.

@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Generic table-driven fp32 function unit (claude_docs/08-vhdl-
+-- Generic table-driven fp32 function unit (syseng_docs/08-vhdl-
 -- implementation-spec.md S2.4's 'lut_unit'). y = T[i] + slope[i]*frac,
 -- where i/frac come from x per the loaded slot's mode:
 --   TAB_MANT  (recip, domain [1,2))   : i/frac from x's mantissa bits directly
@@ -30,7 +30,7 @@ use work.project_types.all;
 --     exactly what this unit exists to avoid.
 --  4. TAB_FRAC (exp2) additionally requires |x| < 256 (flagged
 --     FLAG_OVERFLOW otherwise). Every real use range-reduces first (see
---     claude_docs/04-vhdl-module-list.md S2.3's exp_unit note: "reduce
+--     syseng_docs/04-vhdl-module-list.md S2.3's exp_unit note: "reduce
 --     x = k*ln2+r ... e^r from a 128-entry table"), so x reaching this
 --     unit is always small; this bound just keeps the on-chip integer
 --     part arithmetic in a range where exact (unrounded) i2f holds.

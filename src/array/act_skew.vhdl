@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Input-side skew bank for the matrix array (claude_docs/04-vhdl-
+-- Input-side skew bank for the matrix array (syseng_docs/04-vhdl-
 -- module-list.md's L2 'act_skew': "delays row r by r clocks"). Mandatory
 -- prerequisite for pe_column regardless of sys_array's ACT_DIST choice
 -- -- see pe_cell.vhdl/pe_column.vhdl's headers for the full reasoning,

@@ -9,7 +9,7 @@ transformer forward pass needs: a weight-stationary systolic matrix array,
 a quantized weight path (Q3_K/Q4_K/Q6_K), an activation quantizer, a
 rescaler, an attention engine, and a vector unit for norms/RoPE/sampling.
 
-The design and reasoning behind it live in `claude_docs/` (feasibility
+The design and reasoning behind it live in `syseng_docs/` (feasibility
 study, architecture units, the full VHDL module list, and the
 implementation spec every entity is built against).
 
@@ -74,7 +74,7 @@ src/control/      L4  — command/control (not yet built)
 src/tile/         L5  — tile/chip top (not yet built)
 test/             one self-checking testbench per entity, plus
                   test/run_tests.sh to run all of them
-claude_docs/      the design docs everything here is built against
+syseng_docs/      the design docs everything here is built against
 ```
 
 **Author:** Christopher J. Cole.

@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Generic combinational adder tree (claude_docs/04-vhdl-module-list.md's
+-- Generic combinational adder tree (syseng_docs/04-vhdl-module-list.md's
 -- L1 'int_sum_tree'): sums N signed WIDTH-bit values, widening by
 -- clog2(N) bits so the sum can never overflow regardless of input
 -- values (worst case: every element at the same-sign extreme). Used by

@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Generic table ROM from a constant array (claude_docs/04-vhdl-module-
+-- Generic table ROM from a constant array (syseng_docs/04-vhdl-module-
 -- list.md's L0 utility 'rom_init'). CONTENTS packs all DEPTH entries
 -- concatenated (entry i at CONTENTS((i+1)*WIDTH-1 downto i*WIDTH),
 -- matching generic_mux's own packing convention), supplied by the

@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Rescaler U10 entity 2/3 (claude_docs/04-vhdl-module-list.md's U10
+-- Rescaler U10 entity 2/3 (syseng_docs/04-vhdl-module-list.md's U10
 -- table: "Convert to fp32, multiply by d x activation scale, add into
 -- acc_ram"). One instance per output column, paired with its own
 -- group_scale_acc.vhdl (which supplies sc_acc/min_acc) and its own

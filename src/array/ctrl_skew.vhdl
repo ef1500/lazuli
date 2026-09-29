@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Output-side skew for the matrix array (claude_docs/04-vhdl-module-
+-- Output-side skew for the matrix array (syseng_docs/04-vhdl-module-
 -- list.md's L2 'ctrl_skew': "delays the valid/first/last flags by
 -- column index instead of delaying the data"). Chosen over buffering
 -- the wide P data itself to re-align every column's completion time:

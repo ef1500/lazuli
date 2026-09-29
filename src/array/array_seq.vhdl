@@ -2,9 +2,9 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- The array's control sequencer (claude_docs/04-vhdl-module-list.md's
+-- The array's control sequencer (syseng_docs/04-vhdl-module-list.md's
 -- U9 entry: "counts the clocks per tile, chains one tile into the
--- next, handles matrix edges"; claude_docs/08-vhdl-implementation-spec.
+-- next, handles matrix edges"; syseng_docs/08-vhdl-implementation-spec.
 -- md S3.3's "B" -- activation vectors streamed per tile). Drives
 -- weight_loader's 'swap' and sys_array's 'ce'/'first_in'/'last_in' from
 -- two counters (which tile, which agent within it) loaded once per run

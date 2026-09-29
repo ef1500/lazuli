@@ -7,7 +7,7 @@ use IEEE.NUMERIC_STD.ALL;
 -- repo, so it's analyzed for syntax only by test/run_tests.sh, never
 -- bound here). Generics match the Q6_K corner (WEIGHT_W=6, the widest
 -- of the three formats this project reads) with SPACING=17, the value
--- claude_docs/04-vhdl-module-list.md S2.1 verified works for all three
+-- syseng_docs/04-vhdl-module-list.md S2.1 verified works for all three
 -- K-quant formats.
 --
 -- Main pass: exhaustive over every (w1, w2) weight pair in -32..31 (the

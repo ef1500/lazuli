@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Generic round-to-nearest-even and saturate (claude_docs/04-vhdl-
+-- Generic round-to-nearest-even and saturate (syseng_docs/04-vhdl-
 -- module-list.md's L0 utility 'round_sat'): takes a fixed-point value
 -- wider than the output and produces the nearest representable
 -- OUT_WIDTH-bit value, clamped to the output's range on overflow. Used

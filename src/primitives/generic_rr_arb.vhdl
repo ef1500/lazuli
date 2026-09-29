@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Generic round-robin arbiter (claude_docs/04-vhdl-module-list.md's L0
+-- Generic round-robin arbiter (syseng_docs/04-vhdl-module-list.md's L0
 -- utility 'rr_arb'): N requesters, one grant per cycle, priority
 -- rotating so the requester right after the last one granted goes
 -- first next time.

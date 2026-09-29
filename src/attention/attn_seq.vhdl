@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- U11 entity 6/6 (claude_docs/04-vhdl-module-list.md's `attn_seq` row:
+-- U11 entity 6/6 (syseng_docs/04-vhdl-module-list.md's `attn_seq` row:
 -- "Loops over heads, chunks, sequences") -- the control sequencer tying
 -- kv_reader/qk_lanes/softmax_online/pv_lanes/attn_finish together, same
 -- role for the attention engine that array_seq.vhdl plays for the

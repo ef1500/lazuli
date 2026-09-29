@@ -71,7 +71,7 @@ analyze "$ROOT/src/primitives/generic_bin2gray.vhdl"
 analyze "$ROOT/src/primitives/generic_rom_init.vhdl"
 analyze "$ROOT/src/primitives/generic_async_fifo.vhdl"
 
-# L1 arithmetic (claude_docs/04-vhdl-module-list.md S2.1/S2.2): the
+# L1 arithmetic (syseng_docs/04-vhdl-module-list.md S2.1/S2.2): the
 # array's only compute primitive and the rescaler's integer path.
 analyze "$ROOT/src/primitives/int_sum_tree.vhdl"
 analyze "$ROOT/src/primitives/int_absmax_tree.vhdl"
@@ -79,7 +79,7 @@ analyze "$ROOT/src/primitives/int_mul_scale.vhdl"
 analyze "$ROOT/src/primitives/int_acc.vhdl"
 analyze "$ROOT/src/primitives/dsp_mac2.vhdl"
 
-# L2 -- the matrix array (U9, claude_docs/08-vhdl-implementation-spec.md
+# L2 -- the matrix array (U9, syseng_docs/08-vhdl-implementation-spec.md
 # S3).
 analyze "$ROOT/src/array/pe_cell.vhdl"
 analyze "$ROOT/src/array/pe_column.vhdl"
@@ -89,14 +89,14 @@ analyze "$ROOT/src/array/sys_array.vhdl"
 analyze "$ROOT/src/array/weight_loader.vhdl"
 analyze "$ROOT/src/array/array_seq.vhdl"
 
-# L2 -- weight path (U7, claude_docs/08-vhdl-implementation-spec.md S4).
+# L2 -- weight path (U7, syseng_docs/08-vhdl-implementation-spec.md S4).
 analyze "$ROOT/src/weight/wt_pack.vhdl"
 analyze "$ROOT/src/weight/q3k_unpack.vhdl"
 analyze "$ROOT/src/weight/q4k_unpack.vhdl"
 analyze "$ROOT/src/weight/q6k_unpack.vhdl"
 analyze "$ROOT/src/weight/wt_reader.vhdl"
 
-# L2 -- rescaler (U10, claude_docs/08-vhdl-implementation-spec.md S2.2).
+# L2 -- rescaler (U10, syseng_docs/08-vhdl-implementation-spec.md S2.2).
 # generic_fpu.vhdl/generic_sdp_ram.vhdl/generic_lookup.vhdl are pulled
 # forward from the L0/L1 block below (ghdl -a needs a direct 'entity
 # work.X' instantiation's entity already analyzed, so these are analyzed
@@ -109,8 +109,8 @@ analyze "$ROOT/src/rescaling/group_scale_acc.vhdl"
 analyze "$ROOT/src/rescaling/sb_finish.vhdl"
 analyze "$ROOT/src/rescaling/acc_ram_bank.vhdl"
 
-# L2 -- activations (U8, claude_docs/03-architecture-units.md's U8 /
-# claude_docs/04-vhdl-module-list.md's act_quantizer/act_store rows).
+# L2 -- activations (U8, syseng_docs/03-architecture-units.md's U8 /
+# syseng_docs/04-vhdl-module-list.md's act_quantizer/act_store rows).
 analyze "$ROOT/src/activation/act_quantizer.vhdl"
 analyze "$ROOT/src/activation/act_store.vhdl"
 
@@ -120,12 +120,12 @@ analyze "$ROOT/src/primitives/generic_vector_unit.vhdl"
 analyze "$ROOT/src/primitives/generic_tdp_ram.vhdl"
 analyze "$ROOT/src/lazuli.vhdl"
 
-# L2 -- vector unit (U12, claude_docs/08-vhdl-implementation-spec.md
+# L2 -- vector unit (U12, syseng_docs/08-vhdl-implementation-spec.md
 # S6.1's vec_seq). Only needs generic_register/project_types itself, but
 # lives here since tb_vec_seq.vhdl drives a real lazuli.vhdl instance.
 analyze "$ROOT/src/vector/vec_seq.vhdl"
 
-# L2 -- attention engine (U11, claude_docs/08-vhdl-implementation-spec.md
+# L2 -- attention engine (U11, syseng_docs/08-vhdl-implementation-spec.md
 # S5.1). qk_lanes/kv_reader are independent; softmax_online/pv_lanes need
 # generic_fpu/generic_lookup/generic_sdp_ram/int_acc (already analyzed
 # above); attn_finish additionally needs act_quantizer (already analyzed

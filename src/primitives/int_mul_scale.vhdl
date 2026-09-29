@@ -2,8 +2,8 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Rescaler integer stage (claude_docs/08-vhdl-implementation-spec.md
--- S2.2, claude_docs/04-vhdl-module-list.md S2.2): multiplies a signed
+-- Rescaler integer stage (syseng_docs/08-vhdl-implementation-spec.md
+-- S2.2, syseng_docs/04-vhdl-module-list.md S2.2): multiplies a signed
 -- per-group weight*activation sum (one dsp_mac2 lane, already extracted
 -- from the packed P word -- lane0 = sext(P, SPACING), lane1 =
 -- (P - lane0) >> SPACING, per dsp_mac2.vhdl's header -- that's a plain

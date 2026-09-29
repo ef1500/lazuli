@@ -3,8 +3,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- U12 entity (claude_docs/08-vhdl-implementation-spec.md S6.1's
--- `vec_seq`, claude_docs/04-vhdl-module-list.md's row of the same name):
+-- U12 entity (syseng_docs/08-vhdl-implementation-spec.md S6.1's
+-- `vec_seq`, syseng_docs/04-vhdl-module-list.md's row of the same name):
 -- "Not microcode: each tpu_vop command already names one fully-specified
 -- op and its three stream descriptors (source A, source B, destination
 -- -- base + up to 3 nested loop counts/strides); vec_seq just walks

@@ -2,8 +2,8 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- The array's only compute primitive (claude_docs/08-vhdl-implementation
--- -spec.md S2.1, claude_docs/04-vhdl-module-list.md S2.1). Packs two
+-- The array's only compute primitive (syseng_docs/08-vhdl-implementation
+-- -spec.md S2.1, syseng_docs/04-vhdl-module-list.md S2.1). Packs two
 -- weight lanes into one wide DSP operand, A = w1 + (w2 << SPACING), and
 -- runs P <= P_in + A * x_in every cycle 'ce' is asserted. One DSP slice
 -- does two independent weight*activation products per multiply because

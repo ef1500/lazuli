@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Generic simple dual-port RAM (claude_docs/04-vhdl-module-list.md's L0
+-- Generic simple dual-port RAM (syseng_docs/04-vhdl-module-list.md's L0
 -- utility 'sdp_ram': "Inferred block/LUT RAM", generics W, DEPTH). One
 -- write port and one independent read port, sharing a single clock.
 --

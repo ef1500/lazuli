@@ -3,8 +3,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Rescaler U10 entity 1/3 (claude_docs/04-vhdl-module-list.md's U10 table,
--- claude_docs/08-vhdl-implementation-spec.md S2.2): "Per column: scale
+-- Rescaler U10 entity 1/3 (syseng_docs/04-vhdl-module-list.md's U10 table,
+-- syseng_docs/08-vhdl-implementation-spec.md S2.2): "Per column: scale
 -- multiply, sum 16 groups (2 tiles for Q4_K), optional min_term." One
 -- instance per (output column, DSP lane) -- the caller sequences 16 'ce'
 -- pulses per super-block, one per group, presenting that group's already-

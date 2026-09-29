@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Drives sys_array's w1_next/w2_next bus (claude_docs/08-vhdl-
+-- Drives sys_array's w1_next/w2_next bus (syseng_docs/08-vhdl-
 -- implementation-spec.md S4.2). Direct-write only [D] -- see
 -- sys_array.vhdl's header for why chain-load isn't built: there is no
 -- vendor DSP cascade port to drive one, so weight_loader's whole job

@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Generic N-stage shift register (claude_docs/04-vhdl-module-list.md's
+-- Generic N-stage shift register (syseng_docs/04-vhdl-module-list.md's
 -- L0 utility 'delay_line'): a straight chain of STAGES generic_register
 -- instances. Used both for plain same-clock-domain pipeline alignment
 -- and, driven from an asynchronous source signal, as the synchronizer

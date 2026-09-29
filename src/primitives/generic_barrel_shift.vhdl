@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.project_types.all;
 
--- Generic logical barrel shifter (claude_docs/04-vhdl-module-list.md's
+-- Generic logical barrel shifter (syseng_docs/04-vhdl-module-list.md's
 -- L0 utility 'barrel_shift'), zero-filling either direction. Built as
 -- clog2(WIDTH) stages, each shifting by a fixed power-of-two distance
 -- (stage k shifts by 2**k) that's either applied or skipped based on

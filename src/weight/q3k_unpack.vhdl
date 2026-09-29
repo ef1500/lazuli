@@ -2,8 +2,8 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Q3_K unpacker (claude_docs/08-vhdl-implementation-spec.md S4.1,
--- claude_docs/04-vhdl-module-list.md S1/S4). Turns one raw 110-byte
+-- Q3_K unpacker (syseng_docs/08-vhdl-implementation-spec.md S4.1,
+-- syseng_docs/04-vhdl-module-list.md S1/S4). Turns one raw 110-byte
 -- Q3_K super-block (256 weights) into 16 GROUPS of 16 weights each
 -- (one group = one array column's 16-deep row, per dsp_mac2's ROWS=16)
 -- plus that group's own 6-bit scale, plus one shared fp16 `d` for the

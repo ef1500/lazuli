@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 -- One systolic-array column: R=16 pe_cell chained vertically through the
--- dot-product cascade (claude_docs/08-vhdl-implementation-spec.md S3.2).
+-- dot-product cascade (syseng_docs/08-vhdl-implementation-spec.md S3.2).
 -- p_out of row r feeds p_in of row r+1; row 0's p_in is tied to 0
 -- internally (not an external port -- a column always starts its
 -- depth-16 sum from zero, there's nothing meaningful to feed it from
@@ -21,7 +21,7 @@ use IEEE.NUMERIC_STD.ALL;
 -- each cell's weight pair independently).
 --
 -- ROWS is fixed at 16, not a generic (matches Q3_K's group size, per
--- claude_docs/04-vhdl-module-list.md's "R=16, fixed by the Q3_K group
+-- syseng_docs/04-vhdl-module-list.md's "R=16, fixed by the Q3_K group
 -- size" note) -- everything above this in the design assumes it.
 entity pe_column is
   generic (
