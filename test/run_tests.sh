@@ -97,23 +97,33 @@ analyze "$ROOT/src/weight/q6k_unpack.vhdl"
 analyze "$ROOT/src/weight/wt_reader.vhdl"
 
 # L2 -- rescaler (U10, claude_docs/08-vhdl-implementation-spec.md S2.2).
-# generic_fpu.vhdl/generic_sdp_ram.vhdl are pulled forward from the L0/L1
-# block below (ghdl -a needs a direct 'entity work.X' instantiation's
-# entity already analyzed, so these two are analyzed here instead of
-# twice) -- moved rather than duplicated, so they're removed from their
-# original spot further down.
+# generic_fpu.vhdl/generic_sdp_ram.vhdl/generic_lookup.vhdl are pulled
+# forward from the L0/L1 block below (ghdl -a needs a direct 'entity
+# work.X' instantiation's entity already analyzed, so these are analyzed
+# here instead of twice) -- moved rather than duplicated, so they're
+# removed from their original spot further down.
 analyze "$ROOT/src/primitives/generic_fpu.vhdl"
 analyze "$ROOT/src/primitives/generic_sdp_ram.vhdl"
+analyze "$ROOT/src/primitives/generic_lookup.vhdl"
 analyze "$ROOT/src/rescaling/group_scale_acc.vhdl"
 analyze "$ROOT/src/rescaling/sb_finish.vhdl"
 analyze "$ROOT/src/rescaling/acc_ram_bank.vhdl"
 
+# L2 -- activations (U8, claude_docs/03-architecture-units.md's U8 /
+# claude_docs/04-vhdl-module-list.md's act_quantizer/act_store rows).
+analyze "$ROOT/src/activation/act_quantizer.vhdl"
+analyze "$ROOT/src/activation/act_store.vhdl"
+
 # L0 memory/queue primitives and L1/L2 compute units
 analyze "$ROOT/src/primitives/generic_fifo.vhdl"
-analyze "$ROOT/src/primitives/generic_lookup.vhdl"
 analyze "$ROOT/src/primitives/generic_vector_unit.vhdl"
 analyze "$ROOT/src/primitives/generic_tdp_ram.vhdl"
 analyze "$ROOT/src/lazuli.vhdl"
+
+# L2 -- vector unit (U12, claude_docs/08-vhdl-implementation-spec.md
+# S6.1's vec_seq). Only needs generic_register/project_types itself, but
+# lives here since tb_vec_seq.vhdl drives a real lazuli.vhdl instance.
+analyze "$ROOT/src/vector/vec_seq.vhdl"
 
 echo "== analyzing test/ =="
 analyze "$ROOT/test/tb_generic_base.vhdl"
@@ -154,6 +164,11 @@ analyze "$ROOT/test/tb_group_scale_acc.vhdl"
 analyze "$ROOT/test/tb_sb_finish.vhdl"
 analyze "$ROOT/test/tb_acc_ram_bank.vhdl"
 analyze "$ROOT/test/tb_rescaler_q4k.vhdl"
+
+analyze "$ROOT/test/tb_act_quantizer.vhdl"
+analyze "$ROOT/test/tb_act_store.vhdl"
+
+analyze "$ROOT/test/tb_vec_seq.vhdl"
 
 analyze "$ROOT/test/tb_generic_fifo.vhdl"
 analyze "$ROOT/test/fpu_vectors.vhdl"
@@ -197,6 +212,9 @@ run_tb tb_group_scale_acc
 run_tb tb_sb_finish
 run_tb tb_acc_ram_bank
 run_tb tb_rescaler_q4k
+run_tb tb_act_quantizer
+run_tb tb_act_store
+run_tb tb_vec_seq
 run_tb tb_generic_fifo
 run_tb tb_generic_fpu
 run_tb tb_generic_lookup
